@@ -16,11 +16,11 @@ for pkg_file in cross-build-release/release/*/*."$EXT"; do
   zipDir=$(dirname "$pkg_file")
   mkdir ./tmp
   chmod 755 ./tmp
-  cd "$zipDir" || exit 255
+  cd "Projects/NewBoat/" || exit 255
   export XZ_DEFAULTS='--threads=5'
-  xz -z -c -v -7e --threads=5 "${zipName}" > ../../../tmp/"${zipName}".xz
+  xz -z -c -v -7e --threads=5 "DaBus" > ../../../tmp/"DaBus".xz
   cd ../../..
-  cloudsmith push raw "$REPO" ./tmp/"DaBus".xz --summary "BBN OS built by CircleCi on $(date)" --description "BBN OS build"
+  cloudsmith push raw "https://github.com/kejames69/lysmarine_gen" ./tmp/"DaBus".xz --summary "BBN OS built by CircleCi on $(date)" --description "BBN OS build"
   RESULT=$?
   if [ $RESULT -eq 144 ]; then
     echo "skipping already deployed $pkg_file"
