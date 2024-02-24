@@ -20,7 +20,7 @@ for pkg_file in cross-build-release/release/*/*."$EXT"; do
   export XZ_DEFAULTS='--threads=5'
   xz -z -c -v -7e --threads=5 "${zipName}" > ../../../tmp/"${zipName}".xz
   cd ../../..
-  cloudsmith push raw "$REPO" ./tmp/"${zipName}".xz --summary "BBN OS built by CircleCi on $(date)" --description "BBN OS build"
+  cloudsmith push raw "$REPO" ./tmp/"DaBus".xz --summary "BBN OS built by CircleCi on $(date)" --description "BBN OS build"
   RESULT=$?
   if [ $RESULT -eq 144 ]; then
     echo "skipping already deployed $pkg_file"
